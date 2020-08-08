@@ -39,12 +39,6 @@ function Home () {
   }
   return (
     <Layout user={user} loading={loading}>
-
-      <h1>Page heading</h1>
-      <br/>
-     <Location />
-      <p>Interesting content here</p>
-
       {loading && <p>Loading login info...</p>}
       {!loading && !user && (
         <>
