@@ -4,10 +4,14 @@ import { useFetchUser } from '../lib/user'
 import config from '../lib/config'
 import ProfileCard from '../components/ProfileCard'
 import Link from 'next/link'
+import Location from '../components/location'
+
 const LinkA = ({ children, href }) =>
   <Link href={href}>
     <a className='pl-4 block pr-4 underline hover:text-white'>{children}</a>
   </Link>
+
+
 
 function Home () {
   // set required to true to force the page to require login.
@@ -36,6 +40,8 @@ function Home () {
   return (
     <Layout user={user} loading={loading}>
       <h1>Page heading</h1>
+      <br/>
+     <Location />
       <p>Interesting content here</p>
 
       {loading && <p>Loading login info...</p>}
