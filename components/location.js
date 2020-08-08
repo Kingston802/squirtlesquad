@@ -35,7 +35,7 @@ class Location extends Component {
         })
         .then(res =>   res.json())
         .then((data) => {
-          console.log(data);
+          
          
           this.setState ({
            rests: data.data.map((item) => ({
@@ -75,7 +75,7 @@ class Location extends Component {
 
     render() {
       //this.state.rests.map((rest) => console.log(rest.name));
-      console.log(this.state.rests);
+      //console.log(this.state.rests);
       return (
         <div>
          <ShowRestaurant rest={this.state.rests} />
