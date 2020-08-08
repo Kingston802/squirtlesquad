@@ -1,8 +1,13 @@
 import React, {Component} from "react";
+import ShowRestaurant from '../pages/showRestaurants';
 
 class Location extends Component {
     constructor(props) {
       super(props);
+      this.state = {
+       rests : []
+
+      };
       this.getRest = this.getRest.bind(this);
       this.setRest = this.setRest.bind(this);
     }
@@ -21,26 +26,39 @@ class Location extends Component {
     async setRest(currentLocation) {
      
       console.log(currentLocation);
-      await fetch('https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?latitude=' + currentLocation.lat + '&longitude=' + currentLocation.lng,{
+      await fetch('https://tripadvisor1.p.rapidapi.com/restaurants/list-by-latlng?distance=2&is_closed=false&latitude=' + currentLocation.lat + '&longitude=' + currentLocation.lng,{
         method: "GET",
         headers: {
           "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
           "x-rapidapi-key": "1675195e27msh90ac8fbce74dfa8p19c5f6jsnba2c0d50c801"
         }
-        }).then(res => console.log(res.data));
-     
-      // await fetch('https://developers.zomato.com/api/v2.1/geocode',{
-      //   method: "GET",
-      //   headers: 
-      //   {
-      //     'user-key': 'b16dc15ed311e53c5d1f27d10a7884be', 
-      //     'lat':currentLocation.lat,
-      //     'lon': currentLocation.lng,
-      //     // "Content-Type": "application/json",
-      //     "Access-Control-Allow-Origin": "*",
-      //   }
-      // }).then(res => console.log('response is', res));
+        })
+        .then(res =>   res.json())
+        .then((data) => {
+          
+         
+          this.setState ({
+           rests: data.data.map((item) => ({
+            name: item.name,
+            location: item.address_obj,
+            image: item.photo && item.photo.images.thumbnail.url,
+            distance: item.distance_string,
+            rating: item.rating,
+            price: item.price_level,
+            cuisine: item.cuisine,
+            dietary: item.dietary_restrictions,
+            desc: item.description,
+            url: item.web_url,
+            latitude: item.latitude,
+            longitude: item.longitude
+          }))
 
+         
+        });
+        
+        });
+     
+     
     }
 
     getRest() {
@@ -56,10 +74,11 @@ class Location extends Component {
     }
 
     render() {
-      
+      //this.state.rests.map((rest) => console.log(rest.name));
+      //console.log(this.state.rests);
       return (
         <div>
-          <h4>Using geolocation JavaScript API in React</h4>
+         <ShowRestaurant rest={this.state.rests} />
           
         </div>
       );
