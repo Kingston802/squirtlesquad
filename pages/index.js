@@ -4,7 +4,9 @@ import { useFetchUser } from '../lib/user'
 import config from '../lib/config'
 import ProfileCard from '../components/ProfileCard'
 import Link from 'next/link'
+
 import Location from '../components/location'
+
 
 const LinkA = ({ children, href }) =>
   <Link href={href}>
@@ -40,11 +42,7 @@ function Home () {
   return (
     <Layout user={user} loading={loading}>
 
-      <h1>Page heading</h1>
-      <br/>
-     <Location />
-      <p>Interesting content here</p>
-
+    
       {loading && <p>Loading login info...</p>}
       {!loading && !user && (
         <>
@@ -60,13 +58,17 @@ function Home () {
             <Link href="/api/login">
               <button onClick="" className="bg-green-500 p-4 text-white rounded">Join Us</button>
             </Link>
+        
+            
           </div>
+          
 
           <br/>
         </>
       )}
       {user && (
         <>
+        <Location/>
         </>)}
     </Layout>
   )
