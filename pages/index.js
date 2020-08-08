@@ -35,27 +35,28 @@ function Home () {
   }
   return (
     <Layout user={user} loading={loading}>
-      <h1>Page heading</h1>
-      <p>Interesting content here</p>
-
       {loading && <p>Loading login info...</p>}
       {!loading && !user && (
         <>
-          <p>
-            To view the dashboard <a href='/api/login'>Login</a>
+          <br/>
+          <h1 style={{transform: `translateX(-50%) translateY(-150%)`, top: `50%`, left: `50%`}} className="absolute text-white font-bold shadow-xl">We provide your daily meal solution </h1>
+          <img className="rounded shadow-xl" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2280&q=80"/>
+
+          <h1 className="text-center">Who are we?</h1>
+          <p className="mb-3">
+             Easy Health is a web based application developed by Squirtle Squad (at the 2020 WDCC Hackathon) to provide dietary advice for students. We help students develop a healthy life style based on their eating habits, preferences and budget. We understand everyone's diet plan is unique and easy to change. That's why we are here to not only help you to save money with every meal, but also give appropriate dietary advice according to your needs. We are committed to build a healthy life for all the students.
           </p>
+          <div className="text-center">
+            <Link href="/api/login">
+              <button onClick="" className="bg-green-500 p-4 text-white rounded">Join Us</button>
+            </Link>
+          </div>
+
+          <br/>
         </>
       )}
       {user && (
         <>
-          <ProfileCard user={user}>
-            <button className='btn-blue' onClick={handleClick}>Event</button>
-          </ProfileCard>
-          <h2>Reports</h2>
-          <LinkA href='/report'>Report - useEffect</LinkA>
-          <LinkA href='/reportSSR'>Report - SSR</LinkA>
-          <LinkA href='/reportSWR'>Report - SWR</LinkA>
-
         </>)}
     </Layout>
   )
