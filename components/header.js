@@ -2,31 +2,24 @@ import Link from 'next/link'
 
 const MenuItem = ({ children, href }) =>
   <Link href={href}>
-    <li className='block mt-4 inline-block  rounded-md text-center bg-orange-200 hover:bg-orange-500 px-4 py-2 m-2 lg:mt-0 hover:text-white mr-4'>
-      <a className='no-underline hover:text-white'>{children}</a>
+    <li className='text-white text-2xl inline-block text-center no-underline hover:underline'>
+      <a className='no-underline hover:underline'>{children}</a>
     </li>
   </Link>
 
 function Header ({ user, loading }) {
   return (
-    <header className='bg-orange-300'>
+    <header className='bg-green-500'>
       <nav className='container flex items-center justify-between flex-wrap  py-2 '>
-        <div id='Brand' className='text-3xl text-black-700'>
-          WDCC Workshop Application
+        <div id='Brand' className='text-3xl text-white'>
+          <Link href='/'>
+            Easy Health 
+          </Link>
         </div>
-        <ul className=' flex   '>
-          <MenuItem href='/'>
-              Home
-          </MenuItem>
-          <MenuItem href='/about'>
-              About
-          </MenuItem>
+        <ul className='flex'>
           {!loading &&
             (user ? (
               <>
-                <MenuItem href='/reportSWR'>
-                Report
-                </MenuItem>
                 <MenuItem href='/api/logout'>
                 Logout
                 </MenuItem>
@@ -38,7 +31,6 @@ function Header ({ user, loading }) {
             ))}
         </ul>
       </nav>
-
     </header>
   )
 }
