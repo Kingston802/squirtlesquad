@@ -3,7 +3,7 @@ import Link from 'next/link'
 export const ProfileCard = (res) => {
   return (
     <Link href="/restaurant">
-      <div className='max-w-sm flex my-4 bg-white rounded-lg shadow-xl lg:mx-4'>
+      <div className='max-w-sm flex bg-white rounded-lg shadow-lg hover:shadow-xl mt-2 lg:mx-4'>
         <div className='flex-shrink-0'>
           <img className='h-32 w-32 rounded-l-lg' src={res.res.image} alt='user picture' />
         </div>

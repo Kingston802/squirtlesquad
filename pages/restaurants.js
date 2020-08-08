@@ -9,7 +9,9 @@ export default () =>
   <Layout>
     <div style={{overflow: `hidden`}} className="">
       <Sidebar/>
-      <div style={{right: `30%`}}className="absolute lg:flex">
+      <div style={{right: `12%`}} className="absolute grid sm:grid-cols-1 sm:right-8 lg:grid-cols-3">
+        <ProfileCard res={items[0]}/>
+        <ProfileCard res={items[0]}/>
         <ProfileCard res={items[0]}/>
         <ProfileCard res={items[0]}/>
       </div>
