@@ -20,8 +20,11 @@ function Header ({ user, loading }) {
           {!loading &&
             (user ? (
               <>
+                <MenuItem href='/profile'>
+                  Profile
+                </MenuItem>
                 <MenuItem href='/api/logout'>
-                Logout
+                  Logout 
                 </MenuItem>
               </>
             ) : (

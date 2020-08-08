@@ -3,29 +3,37 @@
 import { useFetchUser } from '../lib/user'
 import Layout from '../components/layout'
 
-const ProfileCard = ({ user }) => {
-  return (
-    <div class='max-w-sm flex  bg-white rounded-lg shadow-xl'>
-      <div class='flex-shrink-0'>
-        <img class='h-32 w-32 rounded-l-lg' src={user.picture} alt='user picture' />
-      </div>
-      <div class='ml-6 pt-1'>
-        <h4 class='text-xl text-gray-900 leading-tight'>{user.name} </h4>
-        <p class='text-base text-gray-600 leading-normal'>{user.nickname}</p>
-      </div>
-    </div>
-  )
-}
-
 function Profile () {
-  const { user, loading } = useFetchUser({ required: true })
+  const { user, loading } = useFetchUser({ required: false })
 
   return (
     <Layout user={user} loading={loading}>
       {loading ? <>Loading...</>
         : (
           <>
-            <ProfileCard user={user} />
+            <h1 className="text-center">Your Profile</h1>
+            <div style={{right: `20%`}} className="absolute">
+              <h2>Wallet</h2>
+              <div className="border rounded shadow text-center">
+                <h3>$43</h3>
+              </div>
+            </div>
+            <div className="absolute">
+              <h2>Preferences</h2>
+              <div className="text-center">
+                <select className="w-32">
+                  <option>Cuisine</option>
+                </select>
+              <br/>
+                <select className="my-4 w-32">
+                  <option>Diet</option>
+                </select>
+              <br/>
+                <select className="mb-4 w-32">
+                  <option>Price</option>
+                </select>
+              </div>
+            </div>
           </>)}
     </Layout>
   )
