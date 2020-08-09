@@ -9,9 +9,7 @@ import { Map, GoogleApiWrapper } from 'google-maps-react';
 export default ((props) => {
   const router = useRouter()
   const res=router.query
-  console.log(res);
-
-
+  res.purchased = true;
 
   return (
     <Layout>
