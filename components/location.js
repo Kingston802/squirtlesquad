@@ -36,12 +36,12 @@ class Location extends Component {
         .then(res =>   res.json())
         .then((data) => {
           
-         
+         console.log(data);
           this.setState ({
            rests: data.data.map((item) => ({
             name: item.name,
             location: item.address_obj,
-            image: item.photo && item.photo.images.thumbnail.url,
+            image: item.photo && item.photo.images.small.url,
             distance: item.distance_string,
             rating: item.rating,
             price: item.price_level,

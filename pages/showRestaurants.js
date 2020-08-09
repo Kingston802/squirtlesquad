@@ -1,5 +1,8 @@
 import react from "react";
 import Location from '../components/location'
+import Layout from '../components/layout'
+
+import ProfileCard from '../components/ProfileCard.js'
 
 class ShowRestaurant extends React.Component {
 
@@ -108,50 +111,39 @@ class ShowRestaurant extends React.Component {
             let cuisineItems = cuisines.map((cui_item)=> <option key={cui_item}> {cui_item}</option>)
             let diets = Object.keys(dietObj)
             let dietItems = diets.map((diet_item) => <option key={diet_item}> {diet_item} </option>)
+            let cards = this.state.rest_objects.map((res) => { 
+                return <ProfileCard res={{image: res.image, name: res.name, price: res.price, rating: res.rating, distance: res.distance}}/>
+            });
             return (    
                 <div>
-                    <div id="filter">
-                    <select id="cuisine_search" onChange={this.cuiSearch.bind(this)}  >
-                        {cuisineItems}
-                        </select>
-                        <select id="dietary_search" onChange={this.dietSearch.bind(this)}>
-                        {dietItems}
-                        </select>
-                        <select id="price_search" onChange={this.priceSearch.bind(this)}>
-                           <option value="$-$$">$-$$</option> 
+                 
+                <div style={{overflow: `hidden`}} className="">
+                <div style={{left: `12%`}} className="border rounded w-48 text-center mt-2 p-2 absolute"> 
+      <form>
+        <select className="w-32" id="cuisine_search" onChange={this.cuiSearch.bind(this)}>
+         {cuisineItems}
+        </select>
+      <br/>
+        <select className="my-4 w-32" onChange={this.dietSearch.bind(this)}>
+          {dietItems}
+        </select>
+      <br/>
+        <select className="mb-4 w-32" id="price_search" onChange={this.priceSearch.bind(this)}>
+           <option value="$-$$">$-$$</option> 
                            <option value="$$-$$$">$$-$$$</option> 
                            <option value="$$$-$$$$"> $$$-$$$$</option>
                            <option value="$$$$"> $$$$ ></option>
-                        </select>
-                    </div>
-                     {this.state.rest_objects.map((res) => { 
-                        
-                            return (
-                                <div id="search ">
-                                  
-                              
-                                   <div id="rest">
-                                       <br/>
-                                       <img src={res.image}></img>
-                                
-                                       <h2>{res.name}</h2> 
-                                       Distance: {res.distance} 
-                                       <br/>
-                                       Rating: {res.rating}
-                                       <br/>
-                                       Price: {res.price}
-                                       <br/>
-                                     
-                                       <hr/>
-                                   </div>
-                                   <div id="map"> </div>
-                               </div>
-   
-                           )
-                         }
-                      
-             
-                    )}
+        </select>
+      </form>
+      <button className="rounded bg-blue-400 text-white hover:bg-blue-500">Use my preferred search</button>
+      <p className="my-2">When do you want to eat?</p>
+      <input className="my-2 border rounded p-2" type="time"/>
+    </div>
+                                  <div style={{right: `12%`}} className="absolute grid sm:grid-cols-1 sm:right-8 lg:grid-cols-3">
+                                   {cards}
+                                   
+                                  </div>
+                                </div>                               
                    
                 </div>
             );
