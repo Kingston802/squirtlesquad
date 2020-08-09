@@ -50,17 +50,7 @@ export default ((props) => {
           <br/>
         </div>
       </div>
-      
-      <Map
-          google={this.props.google}
-          zoom={8}
-          style={mapStyles}
-          // initialCenter={{
-          //   lat: {res.latitude},
-          //   lng: {res.longitude}
-          // }} 
-        >
-        </Map></div>
+      </div>
   </Layout>
     );
 

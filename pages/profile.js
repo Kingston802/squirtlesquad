@@ -11,20 +11,22 @@ function Profile () {
   const res=router.query
   var wallet_limit = 120
   console.log(res);
-
+var reduced = 0
   
   if(res.price == "$-$$") {
-    wallet_limit = wallet_limit - (wallet_limit/100 * 10)
+    reduced = wallet_limit/100 * 10
    
   } else if (res.price == "$$-$$$") {
-    wallet_limit = wallet_limit -  (wallet_limit/100 * 30)
+    reduced = wallet_limit/100 * 30
   } else if(res.price == "$$$-$$$$") {
-    wallet_limit = wallet_limit - (wallet_limit/100 * 50)
+    reduced = wallet_limit/100 * 50
   } else {
-    wallet_limit = wallet_limit - (wallet_limit/100 * 60)
+    reduced = wallet_limit/100 * 70
+    
   }
 
-  window.alert('Your wallet is now ', wallet_limit)
+  wallet_limit = wallet_limit - reduced
+ // window.alert('Your wallet is now ', wallet_limit)
 
   return (
     <Layout user={user} loading={loading}>
@@ -33,6 +35,7 @@ function Profile () {
           <>
             <h1 className="text-center">Your Profile</h1>
             <div style={{right: `20%`}} className="absolute">
+              <h1 color="#ff0000" > Your wallet was reduced about {reduced} </h1>
               <h2>Wallet</h2>
               <div className="border rounded shadow text-center">
                 <h3>$ {wallet_limit}</h3>
