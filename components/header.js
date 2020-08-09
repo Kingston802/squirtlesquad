@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const MenuItem = ({ children, href }) =>
   <Link href={href}>
-    <li className='text-white text-2xl inline-block text-center no-underline hover:underline'>
+    <li className='text-white text-2xl inline-block text-center no-underline mx-2 hover:underline'>
       <a className='no-underline hover:underline'>{children}</a>
     </li>
   </Link>
