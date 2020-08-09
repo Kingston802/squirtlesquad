@@ -2,9 +2,29 @@
 // import auth0 from '../lib/auth0'
 import { useFetchUser } from '../lib/user'
 import Layout from '../components/layout'
+import {useRouter} from 'next/router'
 
 function Profile () {
   const { user, loading } = useFetchUser({ required: false })
+
+  const router = useRouter()
+  const res=router.query
+  var wallet_limit = 120
+  console.log(res);
+
+  
+  if(res.price == "$-$$") {
+    wallet_limit = wallet_limit - (wallet_limit/100 * 10)
+   
+  } else if (res.price == "$$-$$$") {
+    wallet_limit = wallet_limit -  (wallet_limit/100 * 30)
+  } else if(res.price == "$$$-$$$$") {
+    wallet_limit = wallet_limit - (wallet_limit/100 * 50)
+  } else {
+    wallet_limit = wallet_limit - (wallet_limit/100 * 60)
+  }
+
+  window.alert('Your wallet is now ', wallet_limit)
 
   return (
     <Layout user={user} loading={loading}>
@@ -15,7 +35,7 @@ function Profile () {
             <div style={{right: `20%`}} className="absolute">
               <h2>Wallet</h2>
               <div className="border rounded shadow text-center">
-                <h3>$43</h3>
+                <h3>$ {wallet_limit}</h3>
               </div>
             </div>
             <div className="absolute">

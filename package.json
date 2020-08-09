@@ -16,6 +16,7 @@
     "@auth0/nextjs-auth0": "^0.6.0",
     "colorette": "^1.2.1",
     "dotenv": "^8.2.0",
+    "google-maps-react": "^2.0.6",
     "mongodb": "^3.5.9",
     "n-readlines": "^1.0.0",
     "next": "^9.5.1",

@@ -2,15 +2,17 @@ import Layout from '../components/layout'
 import Location from '../components/location.js'
 import Sidebar from '../components/Sidebar.js'
 import ProfileCard from '../components/ProfileCard.js'
-import queryString from 'query-string'
 import {useRouter} from 'next/router'
+import Link from 'next/link'
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 
-export default (props) => {
+export default ((props) => {
   const router = useRouter()
   const res=router.query
   console.log(res);
-  //const res = queryString.parse(props.location.search); 
-  //console.log(res);
+
+
+
   return (
     <Layout>
     <div>
@@ -31,6 +33,13 @@ export default (props) => {
           <h4>
            <blue><a href={res.url || 'https://nakhonthai.co.nz/'}> {res.url || 'https://nakhonthai.co.nz/'}</a></blue> 
           </h4>
+          <br/>
+          <Link href={{ pathname: '/profile', query: res}}>
+          
+          <button className="rounded p-2 bg-green-400 hover:bg-green-500 absolute" id="btncalculate" > Calculate my Wallet</button>
+          
+          </Link> 
+   
         </div>
         <div className="float-right border mt-2 rounded p-2">
           {res.price}
@@ -41,10 +50,33 @@ export default (props) => {
           <br/>
         </div>
       </div>
-    </div>
+      
+      <Map
+          google={this.props.google}
+          zoom={8}
+          style={mapStyles}
+          // initialCenter={{
+          //   lat: {res.latitude},
+          //   lng: {res.longitude}
+          // }} 
+        >
+        </Map></div>
   </Layout>
-    )
-}
+    );
+
+})
+
+  
+   
+  
+ 
+
+   
+    
+
+  
+
+ 
 
   
  
