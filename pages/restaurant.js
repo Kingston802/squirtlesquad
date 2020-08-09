@@ -4,16 +4,27 @@ import Sidebar from '../components/Sidebar.js'
 import ProfileCard from '../components/ProfileCard.js'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import GoogleMapReact from 'google-maps-react';
+// import { Icon } from '@iconify/react'
+// import locationIcon from '@iconify/icons-mdi/map-marker'
 
-export default ((props) => {
+export default ((props) =>  {
   const router = useRouter()
   const res=router.query
   console.log(res);
+  const lat = res.latitude
+  const long = res.longitude
 
+  const mapStyles = {
+    width: '100%',
+    height: '100%'  
+  };
 
+ 
+  console.log('latitude',res.latitude)
 
   return (
+    
     <Layout>
     <div>
       <h1>{res.name}</h1>
@@ -39,6 +50,9 @@ export default ((props) => {
           <button className="rounded p-2 bg-green-400 hover:bg-green-500 absolute" id="btncalculate" > Calculate my Wallet</button>
           
           </Link> 
+          <br/>
+          <br/>
+         
    
         </div>
         <div className="float-right border mt-2 rounded p-2">
@@ -48,13 +62,24 @@ export default ((props) => {
           <br/>
           {res.dist || '2km'}
           <br/>
+         
+          <br/>
+         
         </div>
+       
+       
+        <img width="100%" src="map.jpeg"/>
+      
+       </div>
       </div>
-      </div>
+      
   </Layout>
     );
 
 })
+
+
+
 
   
    
