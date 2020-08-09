@@ -11,6 +11,7 @@ import GoogleMapReact from 'google-maps-react';
 export default ((props) =>  {
   const router = useRouter()
   const res=router.query
+<<<<<<< HEAD
   console.log(res);
   const lat = res.latitude
   const long = res.longitude
@@ -22,6 +23,9 @@ export default ((props) =>  {
 
  
   console.log('latitude',res.latitude)
+=======
+  res.purchased = true;
+>>>>>>> 1c9c5689050e741f85c0636e4cdc710cc9a612ce
 
   return (
     

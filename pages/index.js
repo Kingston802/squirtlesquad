@@ -39,6 +39,7 @@ function Home () {
     // console.log(e.target)
     logEvent('click', 1)
   }
+
   return (
     <Layout user={user} loading={loading}>
 
