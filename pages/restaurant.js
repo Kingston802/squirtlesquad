@@ -51,7 +51,7 @@ export default ((props) =>  {
           <br/>
           <Link href={{ pathname: '/profile', query: res}}>
           
-          <button className="rounded p-2 bg-green-400 hover:bg-green-500 absolute" id="btncalculate" > Calculate my Wallet</button>
+          <button className="rounded p-2 mb-4 bg-green-400 text-white hover:bg-green-500 absolute" id="btncalculate" > Calculate my Wallet</button>
           
           </Link> 
           <br/>
@@ -82,6 +82,7 @@ export default ((props) =>  {
 
 })
 
+<<<<<<< HEAD
 
 
 
@@ -100,3 +101,5 @@ export default ((props) =>  {
   
  
 
+=======
+>>>>>>> a9b251fb42a17956ad86ef6de8bb0af1d5fbdd31
