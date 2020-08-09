@@ -1,13 +1,15 @@
 import Layout from '../components/layout'
 import { useFetchUser } from '../lib/user'
+import { useRouter } from 'next/router'
 
 function About() {
     const { user, loading } = useFetchUser()
+    const router = useRouter()
 
     return (
         <Layout user={user} loading={loading}>
             <h1 className="text-center">Setup Your Profile </h1>
-            <form className="m-auto 32 border p-4 rounded w-full max-w-sm">
+            <form action="/" className="m-auto 32 border p-4 rounded w-full max-w-sm">
               <div className="md:flex md:items-center mb-6">
                 <div className="md:w-1/3">
                   <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
