@@ -139,7 +139,7 @@ class ShowRestaurant extends React.Component {
       <p className="my-2">When do you want to eat?</p>
       <input className="my-2 border rounded p-2" type="time"/>
     </div>
-                                  <div style={{right: `12%`}} className="absolute grid sm:grid-cols-1 sm:right-8 lg:grid-cols-3">
+                                  <div style={{right: `12%`}} className="absolute grid sm:grid-cols-1 sm:right-8 lg:grid-cols-2">
                                    {cards}
                                    
                                   </div>
